@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import axios from "axios";
 import Carousel from "../Carousel/Carousel";
 import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
+import ThemeContext from "../../Context/ThemeContext";
 
 class Details extends Component {
   state = { loading: true };
@@ -33,7 +34,11 @@ class Details extends Component {
           <h2>
             {animal} - {breed} - {city}, {state}
           </h2>
-          <button>Adopt {name}</button>
+          <ThemeContext.Consumer>
+            {([theme]) => (
+              <button style={{ backgroundColor: theme }}>Adopt {name}</button>
+            )}
+          </ThemeContext.Consumer>
           <p>{description}</p>
         </div>
       </div>
