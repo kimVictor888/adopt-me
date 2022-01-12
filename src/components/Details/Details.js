@@ -34,16 +34,17 @@ class Details extends Component {
       this.state;
 
     return (
-      <div className="details">
+      <div className="mx-auto w-10/12">
         <Carousel images={images} />
-        <div>
-          <h1>{name}</h1>
-          <h2>
+        <div className="my-5 bg-gray-200 bg-opacity-80 p-5 rounded-xl text-center font-serif">
+          <h1 className="text-3xl">{name}</h1>
+          <h2 className="my-2 text-xl">
             {animal} - {breed} - {city}, {state}
           </h2>
           <ThemeContext.Consumer>
             {([theme]) => (
               <button
+                className="my-2 px-6 py-2 rounded text-white hover:opacity-50 border-none"
                 style={{ backgroundColor: theme }}
                 onClick={this.toggleModal}
               >
@@ -51,14 +52,24 @@ class Details extends Component {
               </button>
             )}
           </ThemeContext.Consumer>
-          <p>{description}</p>
+          <p className="my-2 text-lg">{description}</p>
           {showModal ? (
             <Modal>
               <div>
-                <h1>Would you like to adopt {name}?</h1>
-                <div className="buttons">
-                  <button onClick={this.adopt}>Yes</button>
-                  <button onClick={this.toggleModal}>No</button>
+                <h1 className="text-lg">Would you like to adopt {name}?</h1>
+                <div className="mt-2 flex justify-between items-center">
+                  <button
+                    className="my-2 px-6 py-2 w-5/12 rounded bg-blue-400 text-white hover:opacity-50 border-none"
+                    onClick={this.adopt}
+                  >
+                    Yes
+                  </button>
+                  <button
+                    className="my-2 px-6 py-2 w-5/12 rounded bg-red-400 text-white hover:opacity-50 border-none"
+                    onClick={this.toggleModal}
+                  >
+                    No
+                  </button>
                 </div>
               </div>
             </Modal>

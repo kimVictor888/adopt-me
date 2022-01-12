@@ -27,16 +27,18 @@ const SearchParams = () => {
   }
 
   return (
-    <div className="search-params">
+    <div className="my-0 mx-auto w-10/12">
       <form
+        className="p-10 mb-10 rounded-lg bg-gray-200 shadow-lg flex flex-col justify-center items-center divide-y divide-gray-900"
         onSubmit={(e) => {
           e.preventDefault();
           requestPets();
         }}
       >
-        <label htmlFor="location">
+        <label className="search-label" htmlFor="location">
           Location
           <input
+            className="search-control"
             id="location"
             type="text"
             value={location}
@@ -44,9 +46,10 @@ const SearchParams = () => {
             onChange={(e) => setLocation(e.target.value)}
           />
         </label>
-        <label htmlFor="animal">
+        <label className="search-label" htmlFor="animal">
           Animal
           <select
+            className="search-control"
             name="animal"
             id="animal"
             value={animal}
@@ -60,11 +63,13 @@ const SearchParams = () => {
             ))}
           </select>
         </label>
-        <label htmlFor="breed">
+        <label className="search-label" htmlFor="breed">
           Breed
           <select
+            className="search-control disabled:opacity-50"
             name="breed"
             id="breed"
+            disabled={!breeds.length}
             value={breed}
             onChange={(e) => setBreed(e.target.value)}
           >
@@ -76,16 +81,24 @@ const SearchParams = () => {
             ))}
           </select>
         </label>
-        <label htmlFor="theme">
+        <label className="search-label" htmlFor="theme">
           Theme
-          <select value={theme} onChange={(e) => setTheme(e.target.value)}>
+          <select
+            className="search-control"
+            value={theme}
+            onChange={(e) => setTheme(e.target.value)}
+          >
             <option value="darkblue">Dark Blue</option>
             <option value="peru">Peru</option>
             <option value="chartreuse">Chartreuse</option>
             <option value="mediumorchid">Medium Orchid</option>
           </select>
         </label>
-        <button type="submit" style={{ backgroundColor: theme }}>
+        <button
+          className="rounded px-6 py-2 text-white hover:opacity-50 border-none"
+          type="submit"
+          style={{ backgroundColor: theme }}
+        >
           Submit
         </button>
       </form>
