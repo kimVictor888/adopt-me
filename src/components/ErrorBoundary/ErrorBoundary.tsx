@@ -1,6 +1,6 @@
 import { Link, Redirect } from "react-router-dom";
 
-import React, { Component } from "react";
+import React, { Component, ErrorInfo } from "react";
 
 class ErrorBoundary extends Component {
   state = {
@@ -12,7 +12,7 @@ class ErrorBoundary extends Component {
     return { hasError: true };
   }
 
-  componentDidCatch(error, errorInfo) {
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error("ErrorBoundary caught an error", error, errorInfo);
     setTimeout(
       () =>

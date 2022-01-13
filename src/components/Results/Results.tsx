@@ -1,7 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 import Pet from "../Pet/Pet";
+import { Pet as IPet } from "../../types/APIResponseTypes";
 
-const Results = ({ pets }) => {
+const Results: FC<{ pets: IPet[] }> = ({ pets }) => {
   return (
     <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
       {!pets.length ? (
